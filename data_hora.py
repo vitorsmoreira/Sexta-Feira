@@ -5,7 +5,7 @@ from gtts import gTTS  # Converte texto em voz.
 from playsound import playsound  # Toca o áudio.
 
 
-def capturar_momento_atual():
+def capturar_momento_atual() -> datetime:
     """Captura o momento atual.
 
     Returns:
@@ -54,24 +54,15 @@ def nomear_mes(mes: int) -> str:
         str: mês em sua versão escrita por extenso.
     """
 
-    # Dicionário contendo o mês e seu nome por extenso.
-    dict_mes = {
-        1: "janeiro",
-        2: "fevereiro",
-        3: "março",
-        4: "abril",
-        5: "maio",
-        6: "junho",
-        7: "julho",
-        8: "agosto",
-        9: "setembro",
-        10: "outubro",
-        11: "novembro",
-        12: "dezembro",
-    }
-
+    # lista contendo os meses escrito por extenso.
+    lista_mes = [
+        "janeiro", "fevereiro", "março", "abril",
+        "maio", "junho", "julho", "agosto",
+        "setembro", "outubro", "novembro", "dezembro"
+    ]
+    
     # Transforma o número do mês em nome do mês por extenso.
-    return dict_mes[mes]
+    return lista_mes[mes - 1]
 
 
 def escrever_mensagem(
