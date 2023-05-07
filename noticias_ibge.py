@@ -5,6 +5,11 @@ from playsound import playsound  # Toca o áudio.
 
 
 def capturar_requisicao():
+    """Captura requisição do site do IBGE.
+
+    Returns:
+        Response: retorna a requisicação do site do IBGE.
+    """    
     
     url = "http://servicodados.ibge.gov.br/api/v3/noticias/?de=05-01-2023"
     r = requests.get(url)    
@@ -13,6 +18,14 @@ def capturar_requisicao():
 
 
 def pegar_noticia(r) -> str:
+    """Pega a última notícia requisitada.
+
+    Args:
+        r (Response): requisição do site da IBGE.
+
+    Returns:
+        str: retorna o texto do título da notícia do IBGE.
+    """    
     
     r_json = r.json()
     json_items = r_json["items"]
@@ -34,6 +47,9 @@ def falar_mensagem(mensagem: str) -> None:
     
     
 def principal() -> None:
+    """Função que chama todas as outras funções.
+    """    
+    
     
     requisicao = capturar_requisicao()
     msg = pegar_noticia(requisicao)
